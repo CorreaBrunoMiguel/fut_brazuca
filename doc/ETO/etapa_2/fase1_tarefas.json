@@ -22,7 +22,7 @@
           "id": "e2-f1-s1-t2",
           "titulo": "Modelar entidades competicao e temporada",
           "descricao": "Definir estrutura lógica de competicao e temporada, incluindo tipo (liga/copa), ano, regras básicas e vínculos entre elas.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": []
         },
