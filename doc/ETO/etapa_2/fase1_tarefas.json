@@ -30,7 +30,7 @@
           "id": "e2-f1-s1-t3",
           "titulo": "Modelar fase, rodada e partida",
           "descricao": "Desenhar a estrutura lógica de fase, rodada e partida para acomodar tanto ligas de pontos corridos quanto copas/mata-mata.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": ["e2-f1-s1-t2"]
         },
