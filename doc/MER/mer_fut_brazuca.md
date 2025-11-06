@@ -235,3 +235,124 @@ Esse MER lógico servirá de base direta para:
 - desenho das rotas principais da API na Etapa 3,
 - referência para ingestão de dados (Etapa 5) e consultas de confrontos (Etapa
   6).
+
+Sim, esse MER é exatamente a consolidação do que fizemos até agora (clube /
+clube_alias / competicao / temporada / fase / rodada / partida) em formato mais
+“profissa”. 👍
+
+Bora seguir e fechar o **Sprint 2** da Fase 1: **convenções de nomenclatura &
+tipos**. Vou adicionar um bloco que você pode encaixar **no final do
+`mer_fut_brazuca.md`** (ou em outro doc, se preferir), como teu mini-guia de
+esquema.
+
+---
+
+### 🧱 Convenções de Esquema (Nomenclatura & Tipos) — fut_brazuca
+
+#### 1. Nomes de tabelas
+
+- Tudo em **snake_case**, no **singular**, minúsculo. Exemplos:
+
+  - `clube`
+  - `clube_alias`
+  - `competicao`
+  - `temporada`
+  - `fase`
+  - `rodada`
+  - `partida`
+
+#### 2. Nomes de colunas
+
+- Também **snake_case**, minúsculo.
+- Sufixos padrão:
+
+  - Chaves estrangeiras: `*_id`
+
+    - `clube_id`, `competicao_id`, `temporada_id`, `fase_id`, `rodada_id`,
+      `mandante_id`, `visitante_id`
+
+  - Auditoria:
+
+    - `created_at`, `updated_at`
+
+  - Booleans:
+
+    - Começar com verbo/estado: `ativo`, `tem_rebaixamento`, `tem_acesso`,
+      `decisao_penaltis`
+
+#### 3. Chaves primárias
+
+- Padrão: coluna `id` em todas as tabelas principais.
+- Tipo físico alvo (Fase 2):
+
+  - `BIGINT` com autoincremento (PostgreSQL: `bigserial`), suficiente para
+    MUITOS registros e simples para joins.
+
+- Nome de constraint (sugestão de padrão na Fase 2):
+
+  - `pk_<tabela>`
+  - Ex.: `pk_clube`, `pk_temporada`, `pk_partida`
+
+#### 4. Chaves estrangeiras
+
+- Sempre nomeadas como `<entidade>_id` apontando para a PK da outra tabela.
+- Nomes de constraints sugeridos:
+
+  - `fk_<tabela>__<coluna>`
+  - Ex.:
+
+    - `fk_clube_alias__clube_id`
+    - `fk_temporada__competicao_id`
+    - `fk_partida__temporada_id`
+    - `fk_partida__fase_id`
+    - `fk_partida__rodada_id`
+    - `fk_partida__mandante_id`
+    - `fk_partida__visitante_id`
+
+#### 5. Tipos básicos sugeridos (PostgreSQL)
+
+- Identificadores (`id`, `*_id`): `BIGINT`
+- Datas:
+
+  - Datas puras: `DATE` (ex.: `data_inicio`, `data_fim`)
+  - Data e hora: `TIMESTAMPTZ` (`timestamp with time zone`) para `data_hora`,
+    `created_at`, `updated_at`
+
+- Textos: `TEXT` na maior parte dos casos (`nome`, `slug`, `descricao`,
+  `observacoes`, `source_ref`, etc.)
+- Inteiros: `INTEGER` para contagens (`numero_rodadas`, `numero_times`,
+  `gols_*`, `ordem`, `ano`)
+- Booleanos: `BOOLEAN` (`ativo`, `tem_rebaixamento`, etc.)
+
+#### 6. Unicidade lógica
+
+- `competicao.slug`: único.
+- (`competicao_id`, `ano`) em `temporada`: único.
+- (`temporada_id`, `numero`) em `rodada`: único.
+- Futuro: pode haver índices únicos auxiliares (`clube.nome_atual`,
+  `clube.slug`), conforme necessidade.
+
+---
+
+### 💾 Commits & tracker
+
+Se você incluir esse bloco no `mer_fut_brazuca.md`:
+
+```bash
+git add doc/mer_fut_brazuca.md
+git commit -m "📝 docs(e2-f1-s2-t1): definir convenções de esquema lógico"
+```
+
+E depois, atualizando `fase1_tarefas.json` marcando as tarefas do Sprint 2 como
+em progresso/concluídas:
+
+```bash
+git add doc/ETO/etapa_2/fase1_tarefas.json
+git commit -m "🧭 plan(e2-f1): atualizar status das tarefas do sprint 2"
+```
+
+Com isso, a **Fase 1** fica praticamente fechada:
+
+- MER pronto,
+- convenções de esquema definidas,
+- Fase 2 (esquema físico + migrações) já com um mapa muito claro pra seguir.
