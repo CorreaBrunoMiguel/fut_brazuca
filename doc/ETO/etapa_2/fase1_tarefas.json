@@ -14,7 +14,7 @@
           "id": "e2-f1-s1-t1",
           "titulo": "Modelar entidades clube e clube_alias",
           "descricao": "Definir atributos e relacionamentos lógicos de clube e clube_alias, garantindo suporte a identidade canônica e aliases históricos.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": []
         },
@@ -22,7 +22,7 @@
           "id": "e2-f1-s1-t2",
           "titulo": "Modelar entidades competicao e temporada",
           "descricao": "Definir estrutura lógica de competicao e temporada, incluindo tipo (liga/copa), ano, regras básicas e vínculos entre elas.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": []
         },
@@ -30,7 +30,7 @@
           "id": "e2-f1-s1-t3",
           "titulo": "Modelar fase, rodada e partida",
           "descricao": "Desenhar a estrutura lógica de fase, rodada e partida para acomodar tanto ligas de pontos corridos quanto copas/mata-mata.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": ["e2-f1-s1-t2"]
         },
@@ -38,7 +38,7 @@
           "id": "e2-f1-s1-t4",
           "titulo": "Revisão de coerência do modelo lógico",
           "descricao": "Revisar o conjunto de entidades e relacionamentos, checando se o modelo responde às perguntas básicas do domínio (clubes por temporada, partidas por temporada, participação em competições).",
-          "status": "pending",
+          "status": "done",
           "prioridade": 2,
           "dependencias": ["e2-f1-s1-t1", "e2-f1-s1-t2", "e2-f1-s1-t3"]
         }
@@ -47,13 +47,13 @@
     {
       "id": "e2-f1-s2",
       "nome": "Convenções de nomenclatura & metadados de esquema",
-      "descricao": "Definir padrões de nomes, tipos e metadados de auditoria para o Data Core.",
+      "descricao": "Definiren padrões de nomes, tipos e metadados de auditoria para o Data Core.",
       "tarefas": [
         {
           "id": "e2-f1-s2-t1",
           "titulo": "Definir convenções de nomenclatura",
           "descricao": "Definir padrão de nomes de tabelas (snake_case), colunas, sufixos (_id, _at, etc.) e nomes de chaves.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": []
         },
@@ -61,7 +61,7 @@
           "id": "e2-f1-s2-t2",
           "titulo": "Definir política de chaves e tipos",
           "descricao": "Escolher tipos para chaves técnicas (BIGINT/UUID), uso (ou não) de chaves naturais e como armazenar identificadores externos de fontes.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": []
         },
@@ -69,7 +69,7 @@
           "id": "e2-f1-s2-t3",
           "titulo": "Definir campos de auditoria e origem",
           "descricao": "Escolher campos de auditoria (created_at, updated_at) e, quando necessário, campos de origem/importação (source_ref, import_batch_id).",
-          "status": "pending",
+          "status": "done",
           "prioridade": 2,
           "dependencias": ["e2-f1-s2-t1", "e2-f1-s2-t2"]
         },
@@ -77,7 +77,7 @@
           "id": "e2-f1-s2-t4",
           "titulo": "Consolidar mini-guia de esquema lógico",
           "descricao": "Consolidar as decisões de nomenclatura, tipos e metadados em um pequeno guia referenciado pelos demais docs da Etapa 2.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 3,
           "dependencias": ["e2-f1-s2-t1", "e2-f1-s2-t2", "e2-f1-s2-t3"]
         }
