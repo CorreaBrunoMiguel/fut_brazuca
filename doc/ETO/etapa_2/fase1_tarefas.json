@@ -14,7 +14,7 @@
           "id": "e2-f1-s1-t1",
           "titulo": "Modelar entidades clube e clube_alias",
           "descricao": "Definir atributos e relacionamentos lógicos de clube e clube_alias, garantindo suporte a identidade canônica e aliases históricos.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": []
         },
