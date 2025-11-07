@@ -22,7 +22,7 @@
           "id": "e2-f2-s1-t2",
           "titulo": "Definir DDL de clube e clube_alias",
           "descricao": "Escrever o DDL inicial (CREATE TABLE) para clube e clube_alias conforme o MER e as convenções de tipos.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": ["e2-f2-s1-t1"]
         },

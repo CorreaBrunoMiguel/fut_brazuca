@@ -3,4 +3,38 @@
 -- - clube
 -- - clube_alias
 
--- DDL será definido na tarefa e2-f2-s1-t2
+-- Tabela: clube
+CREATE TABLE IF NOT EXISTS clube (
+    id              BIGSERIAL PRIMARY KEY,
+    nome_atual      TEXT        NOT NULL,
+    sigla           TEXT,
+    slug            TEXT        NOT NULL,
+    cidade          TEXT,
+    estado          TEXT,
+    pais            TEXT,
+    fundacao_ano    INTEGER,
+    ativo           BOOLEAN     DEFAULT TRUE,
+    created_at      TIMESTAMPTZ DEFAULT NOW(),
+    updated_at      TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Tabela: clube_alias
+CREATE TABLE IF NOT EXISTS clube_alias (
+    id               BIGSERIAL PRIMARY KEY,
+    clube_id         BIGINT      NOT NULL,
+    nome             TEXT        NOT NULL,
+    sigla            TEXT,
+    slug             TEXT,
+    tipo_alias       TEXT,
+    vigencia_inicio  DATE,
+    vigencia_fim     DATE,
+    nota             TEXT,
+    created_at       TIMESTAMPTZ DEFAULT NOW(),
+    updated_at       TIMESTAMPTZ DEFAULT NOW(),
+
+    CONSTRAINT fk_clube_alias__clube_id
+        FOREIGN KEY (clube_id)
+        REFERENCES clube (id)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+);
