@@ -14,7 +14,7 @@
           "id": "e2-f2-s1-t1",
           "titulo": "Criar estrutura de migrações do banco",
           "descricao": "Definir pasta base de migrações (ex.: db/migrations) e um padrão inicial de arquivos SQL ou ferramenta de migração.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": []
         },
