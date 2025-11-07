@@ -1,10 +1,8 @@
-// backend/src/routes/competicoes.routes.ts
 import { Router } from 'express';
 import { pool } from '../db';
 
 export const competicoesRouter = Router();
 
-// GET /competicoes
 competicoesRouter.get('/', async (req, res) => {
   try {
     const limitParam = req.query.limit as string | undefined;
@@ -45,44 +43,6 @@ competicoesRouter.get('/', async (req, res) => {
   } catch (error) {
     console.error('Erro ao listar competições:', error);
     res.status(500).json({ error: 'Erro ao listar competições' });
-  }
-});
-
-// GET /competicoes/:id
-competicoesRouter.get('/:id', async (req, res) => {
-  const { id } = req.params;
-  const numericId = Number(id);
-
-  if (!Number.isInteger(numericId) || numericId <= 0) {
-    return res.status(400).json({ error: 'ID inválido' });
-  }
-
-  try {
-    const result = await pool.query(
-      `
-      SELECT
-        id,
-        nome,
-        slug,
-        tipo,
-        nivel,
-        organizador,
-        descricao,
-        ativo
-      FROM competicao
-      WHERE id = $1
-      `,
-      [numericId]
-    );
-
-    if (result.rowCount === 0) {
-      return res.status(404).json({ error: 'Competição não encontrada' });
-    }
-
-    res.json(result.rows[0]);
-  } catch (error) {
-    console.error('Erro ao buscar competição:', error);
-    res.status(500).json({ error: 'Erro ao buscar competição' });
   }
 });
 
@@ -147,5 +107,42 @@ competicoesRouter.get('/:id/temporada', async (req, res) => {
   } catch (error) {
     console.error('Erro ao listar temporadas da competição:', error);
     res.status(500).json({ error: 'Erro ao listar temporadas da competição' });
+  }
+});
+
+competicoesRouter.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const numericId = Number(id);
+
+  if (!Number.isInteger(numericId) || numericId <= 0) {
+    return res.status(400).json({ error: 'ID inválido' });
+  }
+
+  try {
+    const result = await pool.query(
+      `
+      SELECT
+        id,
+        nome,
+        slug,
+        tipo,
+        nivel,
+        organizador,
+        descricao,
+        ativo
+      FROM competicao
+      WHERE id = $1
+      `,
+      [numericId]
+    );
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({ error: 'Competição não encontrada' });
+    }
+
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Erro ao buscar competição:', error);
+    res.status(500).json({ error: 'Erro ao buscar competição' });
   }
 });

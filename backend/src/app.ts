@@ -6,6 +6,7 @@ import { clubesRouter } from './routes/clubes.routes';
 import { competicoesRouter } from './routes/competicoes.routes';
 import { temporadasRouter } from './routes/temporada.routes';
 import { rodadasRouter } from './routes/rodadas.routes';
+import { partidasRouter } from './routes/partidas.routes';
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use('/clubes', clubesRouter);
 app.use('/competicoes', competicoesRouter);
 app.use('/temporadas', temporadasRouter);
 app.use('/rodadas', rodadasRouter);
+app.use('/partidas', partidasRouter);
 
 app.get('/', (_req, res) => {
   res.json({ name: 'fut_brazuca', status: 'api_v1_ready' });
