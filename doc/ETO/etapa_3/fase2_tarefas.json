@@ -14,7 +14,7 @@
           "id": "e3-f2-s1-t1",
           "titulo": "Criar rotas e controller de clubes",
           "descricao": "Criar arquivo de rotas para /clubes e handlers básicos (GET /clubes, GET /clubes/:id).",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": []
         },
