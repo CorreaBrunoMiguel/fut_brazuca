@@ -1,0 +1,102 @@
+{
+  "etapa": 3,
+  "fase": 2,
+  "nome_fase": "Endpoints de Domínio (Leitura)",
+  "branch": "e3-f2",
+  "status": "planejado",
+  "sprints": [
+    {
+      "id": "e3-f2-s1",
+      "nome": "Clubes & Competições",
+      "descricao": "Implementar endpoints de leitura para clubes e competições.",
+      "tarefas": [
+        {
+          "id": "e3-f2-s1-t1",
+          "titulo": "Criar rotas e controller de clubes",
+          "descricao": "Criar arquivo de rotas para /clubes e handlers básicos (GET /clubes, GET /clubes/:id).",
+          "status": "pending",
+          "prioridade": 1,
+          "dependencias": []
+        },
+        {
+          "id": "e3-f2-s1-t2",
+          "titulo": "Criar rotas e controller de competições",
+          "descricao": "Criar arquivo de rotas para /competicoes e handlers (GET /competicoes, GET /competicoes/:id).",
+          "status": "pending",
+          "prioridade": 1,
+          "dependencias": []
+        },
+        {
+          "id": "e3-f2-s1-t3",
+          "titulo": "Adicionar paginação em listagens",
+          "descricao": "Adicionar suporte a limit/offset em GET /clubes e GET /competicoes.",
+          "status": "pending",
+          "prioridade": 2,
+          "dependencias": ["e3-f2-s1-t1", "e3-f2-s1-t2"]
+        }
+      ]
+    },
+    {
+      "id": "e3-f2-s2",
+      "nome": "Temporadas & Rodadas",
+      "descricao": "Implementar endpoints de leitura de temporadas e rodadas.",
+      "tarefas": [
+        {
+          "id": "e3-f2-s2-t1",
+          "titulo": "GET /competicoes/:id/temporadas",
+          "descricao": "Permitir listar todas as temporadas de uma competição específica.",
+          "status": "pending",
+          "prioridade": 1,
+          "dependencias": ["e3-f2-s1-t2"]
+        },
+        {
+          "id": "e3-f2-s2-t2",
+          "titulo": "GET /temporadas/:id e GET /temporadas/:id/rodadas",
+          "descricao": "Implementar leitura de detalhes de temporada e suas rodadas associadas.",
+          "status": "pending",
+          "prioridade": 1,
+          "dependencias": ["e3-f2-s2-t1"]
+        },
+        {
+          "id": "e3-f2-s2-t3",
+          "titulo": "GET /rodadas/:id",
+          "descricao": "Implementar leitura de detalhes de uma rodada específica.",
+          "status": "pending",
+          "prioridade": 2,
+          "dependencias": ["e3-f2-s2-t2"]
+        }
+      ]
+    },
+    {
+      "id": "e3-f2-s3",
+      "nome": "Partidas & Filtros básicos",
+      "descricao": "Implementar endpoints de partidas e filtros simples por temporada e clube.",
+      "tarefas": [
+        {
+          "id": "e3-f2-s3-t1",
+          "titulo": "GET /partidas/:id",
+          "descricao": "Implementar leitura de detalhes de uma partida específica.",
+          "status": "pending",
+          "prioridade": 1,
+          "dependencias": []
+        },
+        {
+          "id": "e3-f2-s3-t2",
+          "titulo": "GET /temporadas/:id/partidas",
+          "descricao": "Listar partidas de uma temporada com filtros opcionais (rodada, fase).",
+          "status": "pending",
+          "prioridade": 1,
+          "dependencias": ["e3-f2-s2-t2"]
+        },
+        {
+          "id": "id-e3-f2-s3-t3",
+          "titulo": "GET /clubes/:id/partidas",
+          "descricao": "Listar partidas de um clube (mandante ou visitante) em todas as temporadas ou em uma temporada específica.",
+          "status": "pending",
+          "prioridade": 2,
+          "dependencias": ["e3-f2-s3-t2"]
+        }
+      ]
+    }
+  ]
+}

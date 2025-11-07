@@ -1,0 +1,71 @@
+{
+  "etapa": 3,
+  "fase": 1,
+  "nome_fase": "Backbone da API (Esqueleto & Infra)",
+  "branch": "e3-f1",
+  "status": "planejado",
+  "sprints": [
+    {
+      "id": "e3-f1-s1",
+      "nome": "Estrutura do projeto & app base",
+      "descricao": "Criar o diretório backend, app Express básico e estrutura inicial de módulos.",
+      "tarefas": [
+        {
+          "id": "e3-f1-s1-t1",
+          "titulo": "Criar estrutura de diretórios do backend",
+          "descricao": "Definir pasta backend/ (Node/Express) e subpastas principais (src, routes, db, config).",
+          "status": "done",
+          "prioridade": 1,
+          "dependencias": []
+        },
+        {
+          "id": "e3-f1-s1-t2",
+          "titulo": "Inicializar projeto Node/Express",
+          "descricao": "Criar package.json, instalar dependências base (express, pg, dotenv, ts-node/tsconfig se for TypeScript) e criar servidor básico.",
+          "status": "done",
+          "prioridade": 1,
+          "dependencias": ["e3-f1-s1-t1"]
+        },
+        {
+          "id": "e3-f1-s1-t3",
+          "titulo": "Implementar rota /health",
+          "descricao": "Adicionar rota GET /health que retorna um JSON simples indicando que o servidor está vivo.",
+          "status": "done",
+          "prioridade": 2,
+          "dependencias": ["e3-f1-s1-t2"]
+        }
+      ]
+    },
+    {
+      "id": "e3-f1-s2",
+      "nome": "Configuração & Conexão com DB",
+      "descricao": "Adicionar configuração via variáveis de ambiente e verificação de conexão com PostgreSQL.",
+      "tarefas": [
+        {
+          "id": "e3-f1-s2-t1",
+          "titulo": "Definir módulo de configuração",
+          "descricao": "Criar módulo de settings para ler variáveis de ambiente (por exemplo com dotenv) para conexão com o banco.",
+          "status": "done",
+          "prioridade": 1,
+          "dependencias": ["e3-f1-s1-t2"]
+        },
+        {
+          "id": "e3-f1-s2-t2",
+          "titulo": "Criar módulo de conexão com o banco",
+          "descricao": "Criar módulo que expõe um pool de conexão PostgreSQL usando pg.",
+          "status": "done",
+          "prioridade": 1,
+          "dependencias": ["e3-f1-s2-t1"]
+        },
+        {
+          "id": "e3-f1-s2-t3",
+          "titulo": "Implementar /health/db",
+          "descricao": "Adicionar rota GET /health/db que executa SELECT 1 no banco e retorna status apropriado.",
+          "status": "done",
+          "prioridade": 2,
+          "dependencias": ["e3-f1-s2-t2"]
+        }
+      ]
+    }
+  ]
+}
