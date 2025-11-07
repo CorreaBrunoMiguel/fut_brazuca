@@ -84,7 +84,7 @@
           "id": "e2-f2-s3-t1",
           "titulo": "Validar execução das migrações em banco limpo",
           "descricao": "Rodar as migrações em um banco PostgreSQL vazio e garantir que todas as tabelas e constraints são criadas sem erro.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": [
             "e2-f2-s1-t2",
@@ -99,7 +99,7 @@
           "id": "e2-f2-s3-t2",
           "titulo": "Documentar roteiro de migração",
           "descricao": "Criar um pequeno guia (README ou seção) explicando como rodar as migrações localmente e checar o schema.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 2,
           "dependencias": ["e2-f2-s3-t1"]
         }
