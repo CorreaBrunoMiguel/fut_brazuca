@@ -1,0 +1,94 @@
+{
+  "etapa": 2,
+  "fase": 3,
+  "nome_fase": "Seeds de Exemplo & Queries de Verificação",
+  "branch": "e2-f3",
+  "status": "planejado",
+  "sprints": [
+    {
+      "id": "e2-f3-s1",
+      "nome": "Seeds mínimos de exemplo",
+      "descricao": "Popular o schema com um pequeno conjunto de dados coerentes para testes.",
+      "tarefas": [
+        {
+          "id": "e2-f3-s1-t1",
+          "titulo": "Definir cenário mínimo de dados",
+          "descricao": "Escolher um conjunto mínimo de clubes, competições, temporadas e partidas a serem inseridos como exemplo.",
+          "status": "pending",
+          "prioridade": 1,
+          "dependencias": []
+        },
+        {
+          "id": "e2-f3-s1-t2",
+          "titulo": "Criar script SQL de seeds",
+          "descricao": "Escrever um arquivo SQL (ex.: db/seeds_exemplo.sql) com INSERTs para os dados definidos.",
+          "status": "pending",
+          "prioridade": 1,
+          "dependencias": ["e2-f3-s1-t1"]
+        },
+        {
+          "id": "e2-f3-s1-t3",
+          "titulo": "Validar seeds em banco limpo",
+          "descricao": "Aplicar migrações + seeds em um banco limpo e garantir que todos os INSERTs funcionam.",
+          "status": "pending",
+          "prioridade": 2,
+          "dependencias": ["e2-f3-s1-t2"]
+        }
+      ]
+    },
+    {
+      "id": "e2-f3-s2",
+      "nome": "Queries de sanidade do domínio",
+      "descricao": "Escrever queries SQL que validem o comportamento básico do modelo.",
+      "tarefas": [
+        {
+          "id": "e2-f3-s2-t1",
+          "titulo": "Criar queries básicas de listagem",
+          "descricao": "Escrever queries para listar clubes, competições, temporadas e partidas por temporada.",
+          "status": "pending",
+          "prioridade": 1,
+          "dependencias": ["e2-f3-s1-t3"]
+        },
+        {
+          "id": "e2-f3-s2-t2",
+          "titulo": "Criar queries focadas em clube/temporada",
+          "descricao": "Escrever queries que respondam: 'quais partidas o clube X jogou na temporada Y?'",
+          "status": "pending",
+          "prioridade": 1,
+          "dependencias": ["e2-f3-s1-t3"]
+        },
+        {
+          "id": "e2-f3-s2-t3",
+          "titulo": "Registrar queries de sanidade em arquivo",
+          "descricao": "Organizar as queries de verificação em um arquivo (ex.: db/sanity_checks.sql) ou seção do README.",
+          "status": "pending",
+          "prioridade": 2,
+          "dependencias": ["e2-f3-s2-t1", "e2-f3-s2-t2"]
+        }
+      ]
+    },
+    {
+      "id": "e2-f3-s3",
+      "nome": "Ajustes finos e limitações",
+      "descricao": "Ajustar o schema se necessário e documentar limitações para as próximas Etapas.",
+      "tarefas": [
+        {
+          "id": "e2-f3-s3-t1",
+          "titulo": "Ajustar schema com base nos testes",
+          "descricao": "Aplicar ajustes pequenos de tipos/colunas/constraints caso problemas óbvios sejam detectados pelos seeds e queries.",
+          "status": "pending",
+          "prioridade": 2,
+          "dependencias": ["e2-f3-s2-t3"]
+        },
+        {
+          "id": "e2-f3-s3-t2",
+          "titulo": "Documentar limitações conhecidas",
+          "descricao": "Registrar o que o banco já responde bem e o que fica para API, ingestão e confrontos futuros.",
+          "status": "pending",
+          "prioridade": 3,
+          "dependencias": ["e2-f3-s3-t1"]
+        }
+      ]
+    }
+  ]
+}
