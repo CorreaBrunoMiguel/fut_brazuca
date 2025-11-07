@@ -8,28 +8,28 @@
     {
       "id": "e3-f1-s1",
       "nome": "Estrutura do projeto & app base",
-      "descricao": "Criar o diretório backend, app FastAPI básico e estrutura inicial de módulos.",
+      "descricao": "Criar o diretório backend, app Express básico e estrutura inicial de módulos.",
       "tarefas": [
         {
           "id": "e3-f1-s1-t1",
           "titulo": "Criar estrutura de diretórios do backend",
-          "descricao": "Definir pasta backend/ e subpastas principais (app, api, core, db, etc.).",
+          "descricao": "Definir pasta backend/ (Node/Express) e subpastas principais (src, routes, db, config).",
           "status": "pending",
           "prioridade": 1,
           "dependencias": []
         },
         {
           "id": "e3-f1-s1-t2",
-          "titulo": "Criar app FastAPI básico",
-          "descricao": "Criar main.py com instância FastAPI, rota raiz opcional e rota /health simples.",
+          "titulo": "Inicializar projeto Node/Express",
+          "descricao": "Criar package.json, instalar dependências base (express, pg, dotenv, ts-node/tsconfig se for TypeScript) e criar servidor básico.",
           "status": "pending",
           "prioridade": 1,
           "dependencias": ["e3-f1-s1-t1"]
         },
         {
           "id": "e3-f1-s1-t3",
-          "titulo": "Configurar logging básico",
-          "descricao": "Adicionar configuração simples de logging para o app.",
+          "titulo": "Implementar rota /health",
+          "descricao": "Adicionar rota GET /health que retorna um JSON simples indicando que o servidor está vivo.",
           "status": "pending",
           "prioridade": 2,
           "dependencias": ["e3-f1-s1-t2"]
@@ -39,12 +39,12 @@
     {
       "id": "e3-f1-s2",
       "nome": "Configuração & Conexão com DB",
-      "descricao": "Adicionar configuração via env vars e verificação de conexão com PostgreSQL.",
+      "descricao": "Adicionar configuração via variáveis de ambiente e verificação de conexão com PostgreSQL.",
       "tarefas": [
         {
           "id": "e3-f1-s2-t1",
-          "titulo": "Definir objeto de configuração",
-          "descricao": "Criar módulo de settings (ex.: usando pydantic) para carregar variáveis de ambiente relevantes.",
+          "titulo": "Definir módulo de configuração",
+          "descricao": "Criar módulo de settings para ler variáveis de ambiente (por exemplo com dotenv) para conexão com o banco.",
           "status": "pending",
           "prioridade": 1,
           "dependencias": ["e3-f1-s1-t2"]
@@ -52,7 +52,7 @@
         {
           "id": "e3-f1-s2-t2",
           "titulo": "Criar módulo de conexão com o banco",
-          "descricao": "Criar camada simples de conexão com PostgreSQL (pool ou engine) para consultas futuras.",
+          "descricao": "Criar módulo que expõe um pool de conexão PostgreSQL usando pg.",
           "status": "pending",
           "prioridade": 1,
           "dependencias": ["e3-f1-s2-t1"]
@@ -60,7 +60,7 @@
         {
           "id": "e3-f1-s2-t3",
           "titulo": "Implementar /health/db",
-          "descricao": "Adicionar endpoint que verifica conectividade com o banco (ex.: SELECT 1).",
+          "descricao": "Adicionar rota GET /health/db que executa SELECT 1 no banco e retorna status apropriado.",
           "status": "pending",
           "prioridade": 2,
           "dependencias": ["e3-f1-s2-t2"]

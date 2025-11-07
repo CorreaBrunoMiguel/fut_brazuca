@@ -2,23 +2,24 @@
 
 ## 📖 Resumo Geral
 
-A Etapa 3 cria a **API v1** do fut_brazuca, focada em **leitura** do Data Core:
+A Etapa 3 cria a **API v1** do fut_brazuca, focada em **leitura** do Data Core
+(somente read):
 
 - expor endpoints para clubes, competições, temporadas, rodadas, fases e
   partidas;
-- seguir boas práticas de API (paginação, filtros simples, respostas
+- seguir boas práticas REST (paginação, filtros simples, respostas
   consistentes);
-- preparar terreno para futuro: filtros de confrontos, features de IA, ingestão
-  etc.
+- preparar terreno para features futuras (confrontos, ingestão de dados, IA).
 
-Nada de escrita/ingestão ainda — apenas leitura em cima do schema construído na
-Etapa 2.
+### Stack alvo (PERN)
 
-Stack alvo:
+- **P**: PostgreSQL (schema definido na Etapa 2)
+- **E**: Express
+- **R**: React (frontend em Etapa posterior)
+- **N**: Node.js (idealmente 20+), preferencialmente com TypeScript
 
-- **Backend:** Python 3.11+ com **FastAPI**
-- **DB:** PostgreSQL (schema já definido na Etapa 2)
-- **Execução:** app modular, pensando em testes e expansão futura
+Python fica reservado para **serviços de IA/ML futuros**, possivelmente como
+serviço separado, sem mexer na API principal Express.
 
 ---
 
@@ -28,33 +29,28 @@ Stack alvo:
 
 **Objetivo:**
 
-- Criar o projeto backend base com FastAPI:
-  - estrutura de pastas clara (app, domain, infra, api),
-  - arquivo de entrada (`main.py`),
-  - configuração de ambiente (settings),
-  - conexão básica com PostgreSQL,
-  - endpoint de health check (ex.: `/health` e `/health/db`).
-
----
+- Criar a base do backend em Node/Express:
+  - estrutura de pastas (`backend/src/...`),
+  - app Express configurado,
+  - configuração de ambiente (variáveis de conexão com o Postgres),
+  - endpoints de health check (ex.: `GET /health` e `GET /health/db`).
 
 ### Fase 2 — Endpoints de Domínio (leitura)
 
 **Objetivo:**
 
-- Implementar endpoints REST estáveis para leitura:
+- Implementar endpoints REST de leitura para o núcleo de entidades:
 
-  - `GET /clubes`, `GET /clubes/{id}`
-  - `GET /competicoes`, `GET /competicoes/{id}`
-  - `GET /competicoes/{id}/temporadas`
-  - `GET /temporadas/{id}`, `GET /temporadas/{id}/partidas`
-  - `GET /rodadas/{id}`, possivelmente `GET /temporadas/{id}/rodadas`
-  - `GET /partidas/{id}`
+  - `GET /clubes`, `GET /clubes/:id`
+  - `GET /competicoes`, `GET /competicoes/:id`
+  - `GET /competicoes/:id/temporadas`
+  - `GET /temporadas/:id`, `GET /temporadas/:id/partidas`
+  - `GET /rodadas/:id`, `GET /temporadas/:id/rodadas`
+  - `GET /partidas/:id`
 
-- Suporte a:
-  - paginação (limit/offset),
-  - filtros básicos (por temporada, por clube, etc., onde fizer sentido).
-
----
+- Suportar:
+  - paginação simples (`limit`, `offset`),
+  - filtros básicos (por temporada, por clube, etc.), onde fizer sentido.
 
 ### Fase 3 — Docs, Erros & Testes básicos
 
@@ -62,21 +58,22 @@ Stack alvo:
 
 - Refinar a API v1:
 
-  - organizar tags e descrições do OpenAPI,
-  - definir contratos de erro (estrutura de erro padrão),
-  - adicionar testes básicos (ex.: `/health`, alguns endpoints de domínio),
-  - garantir que a API suba em ambiente de dev com o banco populado (Etapa 2 ·
-    Fase 3).
+  - organizar documentação (OpenAPI/Swagger gerado via libs do Express ou doc
+    manual),
+  - definir formato padrão de erro (payload consistente),
+  - adicionar testes básicos (ex.: `/health`, alguns endpoints principais),
+  - garantir que a API sobe em ambiente de dev usando o banco da Etapa 2 (com
+    seeds da Etapa 2 · Fase 3).
 
 ---
 
 ## 🎯 Critério de conclusão da Etapa 3
 
-- Um servidor FastAPI que:
+- Servidor Express em Node rodando localmente que:
 
   - conecta ao PostgreSQL do fut_brazuca,
   - expõe endpoints de leitura para o núcleo de entidades,
-  - possui health checks e documentação automática utilizável.
+  - possui health checks e documentação básica acessível.
 
-- Código organizado de forma modular, pronto para crescer (ingestão, confrontos,
-  IA, etc.).
+- Código organizado de forma modular (config, db, rotas, domínio) pronto para
+  crescer com ingestão, confrontos, IA e afins.

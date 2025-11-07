@@ -2,16 +2,14 @@
 
 ## 📖 Resumo Geral
 
-A Fase 1 da Etapa 3 constrói o **esqueleto da API**:
+A Fase 1 da Etapa 3 constrói o **esqueleto da API v1** em Node/Express:
 
-- estrutura de pastas do backend,
-- app FastAPI básico,
-- configuração de ambiente (settings),
-- conexão com PostgreSQL,
-- endpoints de health check.
+- estrutura de pastas do backend (`backend/`),
+- app Express básico,
+- configuração de ambiente (variáveis para conexão com PostgreSQL),
+- endpoints de health check (`/health` e `/health/db`).
 
-Nada de endpoints de domínio ainda; apenas a base sobre a qual Fase 2 vai
-trabalhar.
+Nada de endpoints de domínio ainda; apenas a base para a Fase 2.
 
 - **Branch da Fase:** `e3-f1` (a partir de `develop`)
 
@@ -23,33 +21,43 @@ trabalhar.
 
 **Objetivo:**
 
-- Criar a estrutura inicial do backend:
+- Criar a estrutura inicial do backend Node/Express:
 
-  - diretório `backend/` (ou similar),
-  - layout de módulos (`backend/app`, `backend/app/api`, `backend/app/core`,
-    `backend/app/db`, etc.),
-  - app FastAPI com rota `/health` simples,
-  - configuração básica de logging.
+  - diretório `backend/`,
+  - subpastas principais:
+    - `backend/src/config` (settings/env),
+    - `backend/src/db` (pool de conexão),
+    - `backend/src/routes` (rotas Express),
+    - `backend/src/server.ts` (ou `server.js`) — ponto de entrada,
+  - app Express respondendo a `GET /health` com algo simples (ex.:
+    `{ status: 'ok' }`).
 
 ---
 
-### Sprint 2 — Configuração & Conexão com DB
+### Sprint 2 — Configuração & Conexão com o DB
 
 **Objetivo:**
 
-- Conectar o app FastAPI ao PostgreSQL do fut_brazuca:
+- Conectar o app Express ao PostgreSQL do fut_brazuca:
 
-  - definir objeto de configuração (carregando env vars),
-  - criar módulo de conexão com o banco (ex.: via `asyncpg` ou `sqlalchemy` — a
-    decidir na implementação),
-  - implementar `/health/db` verificando conectividade com o banco.
+  - definir um módulo de configuração lendo variáveis de ambiente
+    (`DATABASE_URL` ou parâmetros separados),
+  - criar módulo de conexão (ex.: usando `pg` com pool),
+  - implementar `GET /health/db` que executa um `SELECT 1` no banco e reporta
+    status.
 
 ---
 
 ## 🎯 Critérios de conclusão da Fase 1
 
-- Projeto backend com estrutura clara, versionado no repo fut_brazuca.
-- App FastAPI inicial rodando localmente (ex.: via `uvicorn`) com:
-  - `/health` respondendo 200 e alguma payload simples,
-  - `/health/db` confirmando se o banco está acessível.
-- Configuração via variáveis de ambiente documentada, pronta para uso na Fase 2.
+- Projeto backend Node/Express criado em `backend/`, versionado no repo
+  fut_brazuca.
+- Comando de desenvolvimento (ex.: `npm run dev` ou `pnpm dev`) que:
+
+  - sobe o servidor,
+  - responde em `GET /health` com 200,
+  - responde em `GET /health/db` com 200 quando o banco estiver acessível.
+
+- Configuração via variáveis de ambiente documentada:
+  - ex.: `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`
+  - ou uma única `DATABASE_URL` no formato do `pg`.
