@@ -76,7 +76,7 @@
           "id": "e2-f3-s3-t1",
           "titulo": "Ajustar schema com base nos testes",
           "descricao": "Aplicar ajustes pequenos de tipos/colunas/constraints caso problemas óbvios sejam detectados pelos seeds e queries.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 2,
           "dependencias": ["e2-f3-s2-t3"]
         },
@@ -84,7 +84,7 @@
           "id": "e2-f3-s3-t2",
           "titulo": "Documentar limitações conhecidas",
           "descricao": "Registrar o que o banco já responde bem e o que fica para API, ingestão e confrontos futuros.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 3,
           "dependencias": ["e2-f3-s3-t1"]
         }
