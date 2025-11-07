@@ -3,6 +3,7 @@ import cors from 'cors';
 
 import { router as healthRouter } from './routes/health.routes';
 import { clubesRouter } from './routes/clubes.routes';
+import { competicoesRouter } from './routes/competicoes.routes';
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(express.json());
 
 app.use('/health', healthRouter);
 app.use('/clubes', clubesRouter);
+app.use('/competicoes', competicoesRouter);
 
 app.get('/', (_req, res) => {
   res.json({ name: 'fut_brazuca', status: 'api_v1_ready' });

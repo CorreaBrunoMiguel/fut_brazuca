@@ -22,7 +22,7 @@
           "id": "e3-f2-s1-t2",
           "titulo": "Criar rotas e controller de competições",
           "descricao": "Criar arquivo de rotas para /competicoes e handlers (GET /competicoes, GET /competicoes/:id).",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": []
         },
@@ -30,7 +30,7 @@
           "id": "e3-f2-s1-t3",
           "titulo": "Adicionar paginação em listagens",
           "descricao": "Adicionar suporte a limit/offset em GET /clubes e GET /competicoes.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 2,
           "dependencias": ["e3-f2-s1-t1", "e3-f2-s1-t2"]
         }

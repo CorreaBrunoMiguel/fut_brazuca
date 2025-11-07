@@ -3,8 +3,21 @@ import { pool } from '../db';
 
 export const clubesRouter = Router();
 
-clubesRouter.get('/', async (_req, res) => {
+clubesRouter.get('/', async (req, res) => {
   try {
+    const limitParam = req.query.limit as string | undefined;
+    const offsetParam = req.query.offset as string | undefined;
+
+    let limit = Number(limitParam ?? 20);
+    let offset = Number(offsetParam ?? 0);
+
+    if (!Number.isInteger(limit) || limit <= 0 || limit > 50) {
+      limit = 20;
+    }
+    if (!Number.isInteger(offset) || offset <= 0) {
+      offset = 0;
+    }
+
     const result = await pool.query(
       `
         SELECT
@@ -18,10 +31,13 @@ clubesRouter.get('/', async (_req, res) => {
             ativo
         FROM clube
         ORDER BY nome_atual
-        `
+        LIMIT $1 OFFSET $2
+        `,
+      [limit, offset]
     );
 
     res.json({
+      pagination: { limit, offset, count: result.rowCount },
       data: result.rows,
     });
   } catch (error) {
