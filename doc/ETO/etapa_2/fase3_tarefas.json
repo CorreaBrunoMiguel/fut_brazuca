@@ -14,7 +14,7 @@
           "id": "e2-f3-s1-t1",
           "titulo": "Definir cenário mínimo de dados",
           "descricao": "Escolher um conjunto mínimo de clubes, competições, temporadas e partidas a serem inseridos como exemplo.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": []
         },
@@ -22,7 +22,7 @@
           "id": "e2-f3-s1-t2",
           "titulo": "Criar script SQL de seeds",
           "descricao": "Escrever um arquivo SQL (ex.: db/seeds_exemplo.sql) com INSERTs para os dados definidos.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": ["e2-f3-s1-t1"]
         },
@@ -30,7 +30,7 @@
           "id": "e2-f3-s1-t3",
           "titulo": "Validar seeds em banco limpo",
           "descricao": "Aplicar migrações + seeds em um banco limpo e garantir que todos os INSERTs funcionam.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 2,
           "dependencias": ["e2-f3-s1-t2"]
         }
@@ -45,7 +45,7 @@
           "id": "e2-f3-s2-t1",
           "titulo": "Criar queries básicas de listagem",
           "descricao": "Escrever queries para listar clubes, competições, temporadas e partidas por temporada.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": ["e2-f3-s1-t3"]
         },
@@ -53,7 +53,7 @@
           "id": "e2-f3-s2-t2",
           "titulo": "Criar queries focadas em clube/temporada",
           "descricao": "Escrever queries que respondam: 'quais partidas o clube X jogou na temporada Y?'",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": ["e2-f3-s1-t3"]
         },
@@ -61,7 +61,7 @@
           "id": "e2-f3-s2-t3",
           "titulo": "Registrar queries de sanidade em arquivo",
           "descricao": "Organizar as queries de verificação em um arquivo (ex.: db/sanity_checks.sql) ou seção do README.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 2,
           "dependencias": ["e2-f3-s2-t1", "e2-f3-s2-t2"]
         }
