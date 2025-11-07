@@ -53,7 +53,7 @@
           "id": "e2-f2-s2-t1",
           "titulo": "Adicionar constraints de unicidade",
           "descricao": "Definir UNIQUEs para combinações lógicas como (competicao_id, ano) em temporada e (temporada_id, numero) em rodada.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": ["e2-f2-s1-t3", "e2-f2-s1-t4"]
         },
@@ -61,7 +61,7 @@
           "id": "e2-f2-s2-t2",
           "titulo": "Adicionar constraints lógicas em partida",
           "descricao": "Criar constraints como mandante_id != visitante_id e ajustes de NOT NULL onde apropriado.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": ["e2-f2-s1-t4"]
         },
@@ -69,7 +69,7 @@
           "id": "e2-f2-s2-t3",
           "titulo": "Criar índices auxiliares",
           "descricao": "Adicionar índices em colunas de uso frequente, como clube_id em clube_alias e mandante_id/visitante_id/temporada_id em partida.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 2,
           "dependencias": ["e2-f2-s1-t2", "e2-f2-s1-t3", "e2-f2-s1-t4"]
         }
