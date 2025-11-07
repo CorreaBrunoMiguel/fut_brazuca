@@ -1,0 +1,109 @@
+{
+  "etapa": 2,
+  "fase": 2,
+  "nome_fase": "Esquema Físico & Migrações Iniciais",
+  "branch": "e2-f2",
+  "status": "planejado",
+  "sprints": [
+    {
+      "id": "e2-f2-s1",
+      "nome": "DDL das entidades centrais",
+      "descricao": "Transformar o modelo lógico em DDL PostgreSQL para as entidades do núcleo.",
+      "tarefas": [
+        {
+          "id": "e2-f2-s1-t1",
+          "titulo": "Criar estrutura de migrações do banco",
+          "descricao": "Definir pasta base de migrações (ex.: db/migrations) e um padrão inicial de arquivos SQL ou ferramenta de migração.",
+          "status": "done",
+          "prioridade": 1,
+          "dependencias": []
+        },
+        {
+          "id": "e2-f2-s1-t2",
+          "titulo": "Definir DDL de clube e clube_alias",
+          "descricao": "Escrever o DDL inicial (CREATE TABLE) para clube e clube_alias conforme o MER e as convenções de tipos.",
+          "status": "done",
+          "prioridade": 1,
+          "dependencias": ["e2-f2-s1-t1"]
+        },
+        {
+          "id": "e2-f2-s1-t3",
+          "titulo": "Definir DDL de competicao e temporada",
+          "descricao": "Escrever o DDL inicial para competicao e temporada, incluindo PKs, FKs e campos principais.",
+          "status": "done",
+          "prioridade": 1,
+          "dependencias": ["e2-f2-s1-t1"]
+        },
+        {
+          "id": "e2-f2-s1-t4",
+          "titulo": "Definir DDL de fase, rodada e partida",
+          "descricao": "Escrever o DDL inicial para fase, rodada e partida, garantindo que a estrutura suporte ligas e copas.",
+          "status": "done",
+          "prioridade": 1,
+          "dependencias": ["e2-f2-s1-t1", "e2-f2-s1-t3"]
+        }
+      ]
+    },
+    {
+      "id": "e2-f2-s2",
+      "nome": "Constraints de integridade e índices",
+      "descricao": "Adicionar constraints de unicidade, checks e índices auxiliares para tornar o schema robusto e eficiente.",
+      "tarefas": [
+        {
+          "id": "e2-f2-s2-t1",
+          "titulo": "Adicionar constraints de unicidade",
+          "descricao": "Definir UNIQUEs para combinações lógicas como (competicao_id, ano) em temporada e (temporada_id, numero) em rodada.",
+          "status": "done",
+          "prioridade": 1,
+          "dependencias": ["e2-f2-s1-t3", "e2-f2-s1-t4"]
+        },
+        {
+          "id": "e2-f2-s2-t2",
+          "titulo": "Adicionar constraints lógicas em partida",
+          "descricao": "Criar constraints como mandante_id != visitante_id e ajustes de NOT NULL onde apropriado.",
+          "status": "done",
+          "prioridade": 1,
+          "dependencias": ["e2-f2-s1-t4"]
+        },
+        {
+          "id": "e2-f2-s2-t3",
+          "titulo": "Criar índices auxiliares",
+          "descricao": "Adicionar índices em colunas de uso frequente, como clube_id em clube_alias e mandante_id/visitante_id/temporada_id em partida.",
+          "status": "done",
+          "prioridade": 2,
+          "dependencias": ["e2-f2-s1-t2", "e2-f2-s1-t3", "e2-f2-s1-t4"]
+        }
+      ]
+    },
+    {
+      "id": "e2-f2-s3",
+      "nome": "Sanidade das migrações",
+      "descricao": "Garantir que o schema é reproduzível do zero e documentar o processo de subir o banco.",
+      "tarefas": [
+        {
+          "id": "e2-f2-s3-t1",
+          "titulo": "Validar execução das migrações em banco limpo",
+          "descricao": "Rodar as migrações em um banco PostgreSQL vazio e garantir que todas as tabelas e constraints são criadas sem erro.",
+          "status": "done",
+          "prioridade": 1,
+          "dependencias": [
+            "e2-f2-s1-t2",
+            "e2-f2-s1-t3",
+            "e2-f2-s1-t4",
+            "e2-f2-s2-t1",
+            "e2-f2-s2-t2",
+            "e2-f2-s2-t3"
+          ]
+        },
+        {
+          "id": "e2-f2-s3-t2",
+          "titulo": "Documentar roteiro de migração",
+          "descricao": "Criar um pequeno guia (README ou seção) explicando como rodar as migrações localmente e checar o schema.",
+          "status": "done",
+          "prioridade": 2,
+          "dependencias": ["e2-f2-s3-t1"]
+        }
+      ]
+    }
+  ]
+}
