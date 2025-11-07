@@ -14,7 +14,7 @@
           "id": "e3-f1-s1-t1",
           "titulo": "Criar estrutura de diretórios do backend",
           "descricao": "Definir pasta backend/ (Node/Express) e subpastas principais (src, routes, db, config).",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": []
         },
@@ -22,7 +22,7 @@
           "id": "e3-f1-s1-t2",
           "titulo": "Inicializar projeto Node/Express",
           "descricao": "Criar package.json, instalar dependências base (express, pg, dotenv, ts-node/tsconfig se for TypeScript) e criar servidor básico.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": ["e3-f1-s1-t1"]
         },
@@ -30,7 +30,7 @@
           "id": "e3-f1-s1-t3",
           "titulo": "Implementar rota /health",
           "descricao": "Adicionar rota GET /health que retorna um JSON simples indicando que o servidor está vivo.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 2,
           "dependencias": ["e3-f1-s1-t2"]
         }
