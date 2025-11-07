@@ -38,7 +38,7 @@
           "id": "e2-f2-s1-t4",
           "titulo": "Definir DDL de fase, rodada e partida",
           "descricao": "Escrever o DDL inicial para fase, rodada e partida, garantindo que a estrutura suporte ligas e copas.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": ["e2-f2-s1-t1", "e2-f2-s1-t3"]
         }
