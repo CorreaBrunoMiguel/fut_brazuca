@@ -30,7 +30,7 @@
           "id": "e2-f2-s1-t3",
           "titulo": "Definir DDL de competicao e temporada",
           "descricao": "Escrever o DDL inicial para competicao e temporada, incluindo PKs, FKs e campos principais.",
-          "status": "pending",
+          "status": "done",
           "prioridade": 1,
           "dependencias": ["e2-f2-s1-t1"]
         },
